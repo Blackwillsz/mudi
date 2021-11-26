@@ -1,0 +1,43 @@
+<html>
+	<head th:replace="~{base :: head}">
+	<meta charset="UTF-8" />
+<head>
+<body>
+<div th:replace="~{base :: logo}"></div>
+		
+	<div class="container">
+		<<div th:replace="~{base :: titulo('Cadastro Usuario')}"></div>
+		
+		<div class="card mt-3">
+			<form th:action="@{/usuario/cadastroUsuario}" th:object="${cadastroUsuario}" class="card-body" method="POST">
+			<div class="form-group">
+					<label for="nomeProduto">Nome Completo</label>
+					<input th:field="*{nomeCompleto}" th:errorclass="is-invalid" class="form-control" placeholder="nome completo"/>
+					<small>Informe o nome completo</small>
+					<div class="invalid-feedback" th:errors="*{nomeProduto}">
+						Erros do nome do produto
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="cpf">CPF</label>
+					<input th:field="*{cpf}" class="form-control" placeholder="Digite o cpf"/>
+					<small>Procure em um site o produto que você deseja e cole a url da página aqui</small>
+					<div class="invalid-feedback" th:errors="*{cpf}">
+						Erros da url do produto
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="rg">RG</label>
+					<input th:field="*{rg}" class="form-control" placeholder="Digite o rg"/>
+					<small>Procure em um site o produto que você deseja e cole a url da página aqui</small>
+					<div class="invalid-feedback" th:errors="*{rg}">
+						Erros da url do produto
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-7"> Data de Nascimento: <span th:text="${#temporals.format(cadastroUsuario.dataNascimento, 'dd/MM/yyyy')}">10/02/2020</span>
+				</div>
+				
+			</form>
+</body>
+</html>
